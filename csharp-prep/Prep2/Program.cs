@@ -19,7 +19,7 @@ class Program
         {
             letterScore = "A";
         }
-         else if (score >= 80)
+        else if (score >= 80)
         {
             letterScore = "B";
         }
