@@ -1,0 +1,15 @@
+Week 01
+    -CLI = command line interface --> dotnet
+        -to compile you build compiles it into CIL (common intermediate language)
+        -CIL goes into the CLR which is then converted into native machine code.
+    - Terminal terms: "dotnet run", "dotnet build"
+    -make sure you change your path to the program file
+    -CTRL+backtick automantically opens the terminal
+Week 02
+    - Disable "ImplicitUsings" and "Nullable" in the .csproj file of a program.
+    -how to solve the problem of variables named the same thing: use namspaces
+        -namespace is like a logical folder/grouping. You can type in keyword "namespace InsertName{}" curly brackets is what holds
+        everything in it namespace. If namespace not declared, everything would be in the global namespace of Program.
+    -Run time always starts at Main().
+    -CODE, COMPILE, RUN, DECODE
+    -try dotnet new console. What happens? What other projects than console can I create?
