@@ -13,3 +13,22 @@ Week 02
     -Run time always starts at Main().
     -CODE, COMPILE, RUN, DECODE
     -try dotnet new console. What happens? What other projects than console can I create?
+    -Git is a type of version control. 
+    -versioning: you are able to update your code online for collaboration.
+    -you cn revert back to a previous version
+    -git is local on your laptop, that's where it works.
+    -git can save a copy, and that's where versioning comes from just lots of copies that are tagged with a mesage.
+    -multiple copies all local on your laptop
+    -git add adds a folder
+    -git commit, makes a copy on your system that is tagged with the time and who did it.
+    -you are able to keep track of versions and have that data available over the history of time.
+    -distributed version control systems: centralized, copies or changes can be saved in an internet location 
+    making it available to other users as well
+    -git and github same software? no, they are 2 different entities. there are other sites you can use instead of github
+    -what does gitpush do? sends the changes you saved to the cloud. sends all the commits that have not been stored to that central location
+    -you can pull chnges from github to your local git
+    -what happens if 2 people push to the same repository at the same time. github is gonna tell you there is a conflict, it merges changes together too.
+    if 2 people are changing something, the service doesn't know which to take precedence, it will tell you the conflict.
+    -a human has got to fix that problem of merge conflict
+    -commands you should know: git clone, git add, git commit, git push, git pull (practice using this git command line)
+    -git is to save you from losing information
