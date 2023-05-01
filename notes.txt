@@ -32,3 +32,15 @@ Week 02
     -a human has got to fix that problem of merge conflict
     -commands you should know: git clone, git add, git commit, git push, git pull (practice using this git command line)
     -git is to save you from losing information
+Week 03:
+    -What is abstraction?
+        -Making complex statements simple
+        -This brings up classes
+    -What is a class?
+        -highly cohesive grouping of functions that operate on the same data structure
+        -classes has attirbutes(the variables) and methods(the functions).
+        -classes must hae  blanace between generalization and specialization. Too much of either are not useful
+        -it probably better to be more towards generalization. Specialization makes it less flexible
+        -Have class name, have responsibility statement
+    -Language keywords introduced: class & new
+    
