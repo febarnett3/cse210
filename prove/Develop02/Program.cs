@@ -5,6 +5,14 @@ using System.Text;
 using System.Diagnostics;
 using System.IO;
 
+
+//I exceeded the requirements for this assignment:
+//First, I made date an object instead of a string. The user no longer needs to enter a date.
+//Second, I added an additional item to the entry, time. This gives the time the entry was written.
+//That way, if there are several entries a day, you can see the different times they were recorded.
+//Just for fun, I made the prompts sound like the program is asking you instead of the user asking themself.
+//Basically I replaced the I's with you's in the prompts.
+
 namespace Develop02{
     class Program
     {
