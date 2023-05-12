@@ -9,17 +9,23 @@ public class Entry
     public string prompt;
     public string response;
     public string date;
+    public string time;
     
     //Behaviors
     public string ConvertToString()
     {
-        return $"{date}\n{prompt}\n{response}\n";
+        return $"{date}\n{time}\n{prompt}\n{response}\n";
     }
-    public void Hold(string prompt, string response, string date)
+    public string ConvertToFile()
+    {
+        return $"{date}| {time}| {prompt}| {response}\n";
+    }
+    public void Hold(string prompt, string response, string date, string time)
     {
         this.prompt = prompt;
         this.response = response;
         this.date = date;
+        this.time = time;
     }
 }
 }
