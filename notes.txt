@@ -43,4 +43,7 @@ Week 03:
         -it probably better to be more towards generalization. Specialization makes it less flexible
         -Have class name, have responsibility statement
     -Language keywords introduced: class & new
+Week 05:
+    -Encapsulaton: Making things private
+    -Getters & Setters: there is not much a of reason to include them.
     
