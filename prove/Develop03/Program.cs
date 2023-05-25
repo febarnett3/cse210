@@ -1,3 +1,6 @@
+// Program exceeds requirements. 
+// Incorporated a verse library class to hold scripture verses and select a random one.
+
 using System;
 
 class Program
