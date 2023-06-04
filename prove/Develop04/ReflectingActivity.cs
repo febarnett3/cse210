@@ -3,12 +3,16 @@ using System;
 public class ReflectingActivity : Activity 
 {
     // Attributes
+    private Random _random;
     private List <string> _prompts;
     private List <string> _questions;
 
     // Constructors
     public  ReflectingActivity(string name, string description) : base(name, description)
     {
+        // Intialize random
+        _random = new Random();
+
         // Initialize the prompts.
         _prompts = new List<string>()
         {
@@ -37,7 +41,7 @@ public class ReflectingActivity : Activity
     // Runs the activity.
     public void RunActivity()
     {
-        LoadGetReady(); // Plays animation.
+        _animationHelper.LoadGetReady(); // Plays animation.
 
         Console.WriteLine("Consider the following prompt:");
         DisplayPrompt(GetRandomItem(_prompts)); //Selects random prompt and displays it.
@@ -48,22 +52,19 @@ public class ReflectingActivity : Activity
         if (keyInfo.Key == ConsoleKey.Enter)
         {
             Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
-            BeginInCountdown(); // Plays animation.
+            _animationHelper.BeginInCountdown(); // Plays animation.
 
             Console.Clear(); // Clears console for questions.
 
             int durationInSeconds = GetDuration(); // Duration of the while loop in seconds
 
-            DateTime startTime = DateTime.Now; // Get the current time
-            DateTime endTime = startTime.AddSeconds(durationInSeconds); // Calculate the end time
-
-            // Continues for the length of the duration.
-            while (DateTime.Now < endTime)
+            RunActivityLoop(() =>
             {
                 DisplayQuestion(GetRandomItem(_questions)); //Selects random questions and displays it.
-                PauseWithSpinner(10); // Plays animation.
+                _animationHelper.PauseWithSpinner(10); // Plays animation.
                 Console.Write("\n"); // New line.
-            }
+
+            }, durationInSeconds);
         }
     }
 
@@ -72,6 +73,21 @@ public class ReflectingActivity : Activity
     public void DisplayQuestion(string question)
     {
         Console.Write($"> {question}");
+    }
+
+    // Returns a random string from a list of strings.
+    public string GetRandomItem(List<string> items)
+     {
+        // Defining a random index to select a prompt.
+        int index = _random.Next(items.Count);
+        // Returns the prompt of the specified random index.
+        return items[index];
+     }
+    
+    // Displays the string, prompt.
+    public void DisplayPrompt(string prompt)
+    {
+        Console.WriteLine($"--- {prompt} ---");
     }
 
 }

@@ -1,28 +1,25 @@
 using System.Collections.Generic;
-public class Activity : Animations
+public class Activity
 
 {
     // Attributes
-    private Random _random;
     private string _activityName;
     private string _description;
     private int _duration;
-
+    protected AnimationHelper _animationHelper;
     // Constructor
     public Activity(string activity, string description)
     {
-        _random = new Random();
         _activityName = activity;
         _description = description;
+        _animationHelper = new AnimationHelper();
     }
-
     //Getter
     // Returns the int duration the user entered in DisplayStartMessage().
     public int GetDuration()
     {
         return _duration;
     }
-
     // Behaviors
     // Displays the starting message for each activity.
     public void DisplayStartMessage()
@@ -35,34 +32,49 @@ public class Activity : Animations
 
         Console.WriteLine();
 
-        Console.Write($"How long in seconds, would you like for your session? ");
-        _duration = int.Parse(Console.ReadLine());
+        _duration = GetValidDuration();
     }
-
     // Displays the ending message for each activity.
     public void DisplayEndMessage()
     {
         Console.WriteLine();
         Console.WriteLine($"You have completed another {_duration} seconds of the {_activityName}");
-        Console.Write("Returning to menu in... ");
-        PauseWithCountdown(5);
+        _animationHelper.ReturningToMenu();
+    }
+    // Ensures that the duration is an integer.
+    private int GetValidDuration()
+    {
+        int duration;
+        bool isValidDuration;
+
+        // This is a do while loop. Prompt will be displayed at least once.
+        // This loop will break once the input is an integer.
+        do
+        {
+            Console.Write("How long in seconds would you like for your session? ");
+            isValidDuration = int.TryParse(Console.ReadLine(), out duration);
+
+            // If parsing the user input fails...
+            if (!isValidDuration)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer.");
+            }
+        } while (!isValidDuration);
+
+        // Returns the user's integer.
+        return duration;
     }
 
-    // Returns a random string from a list of strings.
-    // This function is used in two activities.
-    public string GetRandomItem(List<string> items)
-     {
-        // Defining a random index to select a prompt.
-        int index = _random.Next(items.Count);
-        // Returns the prompt of the specified random index.
-        return items[index];
-     }
-    
-    // Displays the string, prompt.
-    // This function is used in two actvities.
-    public void DisplayPrompt(string prompt)
+    // All activities loop/last while duration is less than end time.
+    // Creates an instance of a loop for each activity to use in their RunActivity() behavior.
+    protected void RunActivityLoop(Action loopAction, int durationInSeconds)
     {
-        Console.WriteLine($"--- {prompt} ---");
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(durationInSeconds);
+
+        while (DateTime.Now < endTime)
+        {
+            loopAction.Invoke();
+        }
     }
-    
 }

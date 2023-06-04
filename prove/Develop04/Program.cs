@@ -32,6 +32,11 @@ class Program
                     case "4":
                         Console.WriteLine("Exiting Program. Goodbye!");
                         return;
+                    default:
+                        Console.WriteLine("Invalid option. Please enter a valid option from the menu.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                        break;
 
                 }
             }

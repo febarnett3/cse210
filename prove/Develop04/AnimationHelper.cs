@@ -1,20 +1,27 @@
-public class Animations
-{
-    // This class holds all the animations.
-    // Is parent class of Activity.
+using System;
+using System.Collections.Generic;
+using System.Threading;
 
-    //Spinner animation. Takes integer parameter for specified time it will last.
+public class AnimationHelper
+{
+    private List<string> _animationStrings;
+
+    public AnimationHelper()
+    {
+        // Initialize the animation strings
+        _animationStrings = new List<string>()
+        {
+            "|", "/", "-", "\\"
+        };
+    }
+
     public void PauseWithSpinner(int numSeconds)
     {
-        List<string> _animationStrings = new List<string>()
-                    {
-                        "|","/","-","\\","|","/","-","\\"                    
-                    };
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(numSeconds);
 
         int i = 0;
-        
+
         while (DateTime.Now < endTime)
         {
             string s = _animationStrings[i];
@@ -29,10 +36,8 @@ public class Animations
                 i = 0;
             }
         }
-
     }
 
-    //Countdown animation. Takes integer parameter for specified time it will last.
     public void PauseWithCountdown(int numSeconds)
     {
         for (int i = numSeconds; i > 0; i--)
@@ -43,7 +48,6 @@ public class Animations
         }
     }
 
-    // Loading animation. Clears whole screen and says "Get Ready..." with a spinner animation.
     public void LoadGetReady()
     {
         Console.Clear();
@@ -51,11 +55,16 @@ public class Animations
         PauseWithSpinner(5);
     }
 
-    // Countdown animation that says "You may begin in: " with a countdown animation.
     public void BeginInCountdown()
     {
         Console.Write("You may begin in: ");
         PauseWithCountdown(5);
         Console.Write("\n");
+    }
+
+    public void ReturningToMenu()
+    {
+        Console.WriteLine("Press any key to return to menu...");
+        Console.ReadKey();
     }
 }
