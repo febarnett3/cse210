@@ -5,7 +5,7 @@ public class ListingActivity : Activity
     private List <string> _prompts;
 
     // Constructors
-    public  ListingActivity(string name, string description) : base(name, description)
+    public  ListingActivity(string name, string description, int duration) : base(name, description, duration)
     {
         // Intialize random
         _random = new Random();

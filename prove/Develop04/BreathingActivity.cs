@@ -3,8 +3,8 @@ public class BreathingActivity : Activity
     // Notice there are no attributes. None were needed. :)
 
     // Constructors
-    public  BreathingActivity(string name, string description) 
-        : base(name, description)
+    public  BreathingActivity(string name, string description, int duration) 
+        : base(name, description, duration)
     {
         // No additional logic or attributes needed
     }

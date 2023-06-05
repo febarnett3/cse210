@@ -8,17 +8,22 @@ public class Activity
     private int _duration;
     protected AnimationHelper _animationHelper;
     // Constructor
-    public Activity(string activity, string description)
+    public Activity(string activity, string description, int duration)
     {
         _activityName = activity;
         _description = description;
+        _duration = duration;
         _animationHelper = new AnimationHelper();
     }
-    //Getter
+    // Getter
     // Returns the int duration the user entered in DisplayStartMessage().
     public int GetDuration()
     {
         return _duration;
+    }
+    public string GetName()
+    {
+        return _activityName;
     }
     // Behaviors
     // Displays the starting message for each activity.
@@ -38,7 +43,7 @@ public class Activity
     public void DisplayEndMessage()
     {
         Console.WriteLine();
-        Console.WriteLine($"You have completed another {_duration} seconds of the {_activityName}");
+        Console.WriteLine($"Great job! You have completed another {_duration} seconds of the {_activityName}");
         _animationHelper.ReturningToMenu();
     }
     // Ensures that the duration is an integer.
@@ -76,5 +81,16 @@ public class Activity
         {
             loopAction.Invoke();
         }
+    }
+
+    public string ConvertToFileFormat()
+    {
+        return $"{_activityName}| {_duration}\n";
+    }
+
+    public void Hold(string name, int duration)
+    {
+        _activityName = name;
+        _duration = duration;
     }
 }

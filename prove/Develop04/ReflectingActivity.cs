@@ -8,7 +8,7 @@ public class ReflectingActivity : Activity
     private List <string> _questions;
 
     // Constructors
-    public  ReflectingActivity(string name, string description) : base(name, description)
+    public  ReflectingActivity(string name, string description, int duration) : base(name, description, duration)
     {
         // Intialize random
         _random = new Random();
