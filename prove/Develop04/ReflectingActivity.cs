@@ -3,14 +3,15 @@ using System;
 public class ReflectingActivity : Activity 
 {
     // Attributes
+
     private Random _random;
     private List <string> _prompts;
     private List <string> _questions;
 
     // Constructors
+
     public  ReflectingActivity(string name, string description, int duration) : base(name, description, duration)
     {
-        // Intialize random
         _random = new Random();
 
         // Initialize the prompts.
@@ -38,56 +39,63 @@ public class ReflectingActivity : Activity
     }
 
     // Behaviors
-    // Runs the activity.
+
     public void RunActivity()
     {
         _animationHelper.LoadGetReady(); // Plays animation.
 
         Console.WriteLine("Consider the following prompt:");
-        DisplayPrompt(GetRandomItem(_prompts)); //Selects random prompt and displays it.
+        DisplayPrompt(GetRandomItem(_prompts)); // Selects random prompt and displays it.
         Console.WriteLine("When you have something in mind, press enter to continue.");
 
         // Listens for when user presses enter.
-        ConsoleKeyInfo keyInfo = Console.ReadKey();
-        if (keyInfo.Key == ConsoleKey.Enter)
+        // Also handles the exception if key pressed is not Enter.
+        bool isEnterKey;
+        do
         {
-            Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
-            _animationHelper.BeginInCountdown(); // Plays animation.
-
-            Console.Clear(); // Clears console for questions.
-
-            int durationInSeconds = GetDuration(); // Duration of the while loop in seconds
-
-            RunActivityLoop(() =>
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
+            isEnterKey = (keyInfo.Key == ConsoleKey.Enter);
+            
+            if (isEnterKey)
             {
-                DisplayQuestion(GetRandomItem(_questions)); //Selects random questions and displays it.
-                _animationHelper.PauseWithSpinner(10); // Plays animation.
-                Console.Write("\n"); // New line.
+                Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
+                _animationHelper.BeginInCountdown(); // Plays animation.
+                Console.Clear(); // Clears console for questions.
 
-            }, durationInSeconds);
-        }
-    }
+                int durationInSeconds = GetDuration(); // Duration of the while loop in seconds
 
-    // Displays a question.
-    // This behavior is unique to this acitivty only.
-    public void DisplayQuestion(string question)
-    {
-        Console.Write($"> {question}");
+                RunActivityLoop(() => ReflectExercise(), durationInSeconds); // Loops the exercise loop through activity loop template.
+            }
+        } while (!isEnterKey); // Will keep reading user keystroke until it is the enter key.
     }
 
     // Returns a random string from a list of strings.
-    public string GetRandomItem(List<string> items)
+    private string GetRandomItem(List<string> items)
      {
         // Defining a random index to select a prompt.
         int index = _random.Next(items.Count);
         // Returns the prompt of the specified random index.
         return items[index];
      }
+
+    // Displays a question.
+    private void DisplayQuestion(string question)
+    {
+        Console.Write($"> {question}");
+    }
     
-    // Displays the string, prompt.
-    public void DisplayPrompt(string prompt)
+    // Displays a prompt.
+    private void DisplayPrompt(string prompt)
     {
         Console.WriteLine($"--- {prompt} ---");
+    }
+
+    // The looped exercise for this activity.
+    private void ReflectExercise()
+    {
+        DisplayQuestion(GetRandomItem(_questions)); //Selects random questions and displays it.
+        _animationHelper.PauseWithSpinner(10); // Plays animation.
+        Console.Write("\n"); // New line.
     }
 
 }

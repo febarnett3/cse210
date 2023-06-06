@@ -6,7 +6,8 @@ public class Activity
     private string _activityName;
     private string _description;
     private int _duration;
-    protected AnimationHelper _animationHelper;
+    protected AnimationHelper _animationHelper; // lets child classes use animations
+    
     // Constructor
     public Activity(string activity, string description, int duration)
     {
@@ -15,8 +16,8 @@ public class Activity
         _duration = duration;
         _animationHelper = new AnimationHelper();
     }
-    // Getter
-    // Returns the int duration the user entered in DisplayStartMessage().
+
+    // Getters
     public int GetDuration()
     {
         return _duration;
@@ -25,8 +26,8 @@ public class Activity
     {
         return _activityName;
     }
+
     // Behaviors
-    // Displays the starting message for each activity.
     public void DisplayStartMessage()
     {
         Console.WriteLine($"Welcome to the {_activityName}");
@@ -37,14 +38,14 @@ public class Activity
 
         Console.WriteLine();
 
-        _duration = GetValidDuration();
+        _duration = GetValidDuration(); // gets duration from user. Ensures int value.
     }
     // Displays the ending message for each activity.
     public void DisplayEndMessage()
     {
         Console.WriteLine();
         Console.WriteLine($"Great job! You have completed another {_duration} seconds of the {_activityName}");
-        _animationHelper.ReturningToMenu();
+        _animationHelper.ReturnToMenu();
     }
     // Ensures that the duration is an integer.
     private int GetValidDuration()
@@ -83,14 +84,9 @@ public class Activity
         }
     }
 
+    // Converts an instance of an activity into file format to save and load.
     public string ConvertToFileFormat()
     {
         return $"{_activityName}| {_duration}\n";
-    }
-
-    public void Hold(string name, int duration)
-    {
-        _activityName = name;
-        _duration = duration;
     }
 }

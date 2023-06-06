@@ -4,17 +4,24 @@ using System.Threading;
 
 public class AnimationHelper
 {
+    // Attributes
+
     private List<string> _animationStrings;
 
+    // Constructors
+    
     public AnimationHelper()
     {
-        // Initialize the animation strings
+        // Initialize aniimation strings list for spinner.
         _animationStrings = new List<string>()
         {
             "|", "/", "-", "\\"
         };
     }
 
+    // Behaviors
+
+    // Spinner animation
     public void PauseWithSpinner(int numSeconds)
     {
         DateTime startTime = DateTime.Now;
@@ -38,6 +45,7 @@ public class AnimationHelper
         }
     }
 
+    // Countdown animation.
     public void PauseWithCountdown(int numSeconds)
     {
         for (int i = numSeconds; i > 0; i--)
@@ -48,6 +56,7 @@ public class AnimationHelper
         }
     }
 
+    // Get ready animation with spinner.
     public void LoadGetReady()
     {
         Console.Clear();
@@ -55,6 +64,7 @@ public class AnimationHelper
         PauseWithSpinner(5);
     }
 
+    // Begin in: with countdown.
     public void BeginInCountdown()
     {
         Console.Write("You may begin in: ");
@@ -62,7 +72,8 @@ public class AnimationHelper
         Console.Write("\n");
     }
 
-    public void ReturningToMenu()
+    // Prompts user to enter key to return to menu.
+    public void ReturnToMenu()
     {
         Console.WriteLine("Press any key to return to menu...");
         Console.ReadKey();

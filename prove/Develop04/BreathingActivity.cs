@@ -1,8 +1,9 @@
 public class BreathingActivity : Activity
 {
-    // Notice there are no attributes. None were needed. :)
+    // No attributes necessary.
 
-    // Constructors
+    // Constructor
+
     public  BreathingActivity(string name, string description, int duration) 
         : base(name, description, duration)
     {
@@ -10,20 +11,22 @@ public class BreathingActivity : Activity
     }
 
     // Behaviors
-    //Runs the activity
+
     public void RunActivity()
     {
         _animationHelper.LoadGetReady(); // Plays animation
 
         int durationInSeconds = GetDuration(); // Duration of the while loop in seconds
 
-        RunActivityLoop(() =>
-        {
-            Console.WriteLine();
-            BreatheIn();
-            BreatheOut();
+        RunActivityLoop(() => BreathExercise(), durationInSeconds); // Loops the exercise loop through activity loop template.
+    }
 
-        }, durationInSeconds);
+    // The looped exercise for this activity.
+    private void BreathExercise()
+    {
+        Console.WriteLine();
+        BreatheIn();
+        BreatheOut();
     }
 
     // Prints and plays animation for breathing in.

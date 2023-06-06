@@ -46,4 +46,7 @@ Week 03:
 Week 05:
     -Encapsulaton: Making things private
     -Getters & Setters: there is not much a of reason to include them.
-    
+Week08:
+    - Inheritance. <has a> is now <is a>
+    - There is a class that is the base class. Classes derived from base class inherit certain attributes/behaviors from the base class.
+    - This creates more specificiity

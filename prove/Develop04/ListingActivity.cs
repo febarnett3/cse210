@@ -1,10 +1,12 @@
 public class ListingActivity : Activity 
 {
     // Attributes
+
     private Random _random;
     private List <string> _prompts;
 
     // Constructors
+    
     public  ListingActivity(string name, string description, int duration) : base(name, description, duration)
     {
         // Intialize random
@@ -21,8 +23,8 @@ public class ListingActivity : Activity
         };
     }
 
-    // Behaviors   
-    // Runs the activity.
+    // Behaviors
+
     public void RunActivity()
     {
         _animationHelper.LoadGetReady(); // Plays animation.
@@ -34,17 +36,12 @@ public class ListingActivity : Activity
 
         int durationInSeconds = GetDuration(); // Duration of the while loop in seconds
 
-        RunActivityLoop(() =>
-        {
-            Console.Write("> ");
-            string userInput = Console.ReadLine(); // Gets user input.
-
-        }, durationInSeconds);
+        RunActivityLoop(() => ListingExercise(), durationInSeconds); // Loops the exercise loop through activity loop template.
         
     }
 
     // Returns a random string from a list of strings.
-    public string GetRandomItem(List<string> items)
+    private string GetRandomItem(List<string> items)
      {
         // Defining a random index to select a prompt.
         int index = _random.Next(items.Count);
@@ -53,9 +50,15 @@ public class ListingActivity : Activity
      }
     
     // Displays the string, prompt.
-    public void DisplayPrompt(string prompt)
+    private void DisplayPrompt(string prompt)
     {
         Console.WriteLine($"--- {prompt} ---");
     }
-    
+
+    // The looped exercise for this activity.
+    private void ListingExercise()
+    {
+        Console.Write("> ");
+        string userInput = Console.ReadLine(); // Gets user input.
+    }  
 }
