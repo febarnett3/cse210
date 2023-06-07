@@ -1,6 +1,7 @@
 using System;
 
 class Program
+// Exceeds Requirements. Program has save and load features to record the time spent on each activity onto a file.
 {
     static void Main(string[] args)
 {
@@ -43,8 +44,6 @@ class Program
         }
     }
 }
-
-
             
     static void DisplayMenu()
     {
