@@ -1,5 +1,8 @@
+using System;
+
 public class EternalGoal : Goal
 {
+    // Constructors
     public EternalGoal(string name, string description) : base(name, description)
     {
         
@@ -10,13 +13,13 @@ public class EternalGoal : Goal
     }
 
     // Overridden Behaviors
-    public override void RecordEvent()
-    {
-        Console.WriteLine($"Congratulations! You earned {GetPoints()} points!");
-    }
     public override bool IsComplete()
     {
         return false;
+    }
+    public override void RecordEvent()
+    {
+        Console.WriteLine($"Congratulations! You earned {GetPoints()} points!");
     }
     public override string ConvertToFile()
     {

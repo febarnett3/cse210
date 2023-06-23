@@ -1,3 +1,4 @@
+using System;
 public class ChecklistGoal : Goal
 {
     // Attributes
@@ -5,7 +6,7 @@ public class ChecklistGoal : Goal
     private int _bonusDenominator;
     private int _bonusNumerator;
 
-    // Constructor
+    // Constructors
     public ChecklistGoal(string name, string description) : base(name, description)
     {
         _bonusDenominator = 0;
@@ -18,7 +19,8 @@ public class ChecklistGoal : Goal
         _bonus = bonus;
         _bonusNumerator = currentBonusNum;
     }
-    // Getter
+
+    // Getters
     public int GetBonus()
     {
         return _bonus;
@@ -31,11 +33,13 @@ public class ChecklistGoal : Goal
     {
         return _bonusDenominator;
     }
+
     // Overridden Behaviors
-    public override void RecordEvent()
+    public override void InquiryGoalDetails()
     {
-        Console.WriteLine($"Congragulations! You earned {GetPoints()} points!");
-        _bonusNumerator ++;
+        base.InquiryGoalDetails();
+        InquiryBonusDenominator();
+        InquiryBonus();   
     }
     public override bool IsComplete()
     {
@@ -50,11 +54,10 @@ public class ChecklistGoal : Goal
             return false;
         }
     }
-    public override void InquiryGoalDetails()
+    public override void RecordEvent()
     {
-        base.InquiryGoalDetails();
-        InquiryBonusDenominator();
-        InquiryBonus();   
+        Console.WriteLine($"Congragulations! You earned {GetPoints()} points!");
+        _bonusNumerator ++;
     }
     public override void DisplayGoal()
     {
@@ -64,20 +67,20 @@ public class ChecklistGoal : Goal
     {
         return $"ChecklistGoal:{GetName()},{GetDescription()},{GetPoints()},{GetBonus()},{GetBonusDenominator()},{GetBonusNumerator()}";
     }
-    // Behaviors
-    public void DisplayEarnedBonusPoints()
-    {
-        Console.WriteLine($"Congratulations! You earned an additional {GetBonus()} points!");
-    }
 
     // Private behaviors
     private void InquiryBonusDenominator()
     {
         _bonusDenominator = InquiryValidInteger("How many times does this goal need to be accomplished for a bonus? ");
     }
-
     private void InquiryBonus()
     {
         _bonus = InquiryValidInteger("What is the bonus for accomplishing it that many times? ");
+    }
+
+    // Unique Behaviors
+    public void DisplayEarnedBonusPoints()
+    {
+        Console.WriteLine($"Congratulations! You earned an additional {GetBonus()} points!");
     }
 }

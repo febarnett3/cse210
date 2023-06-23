@@ -1,7 +1,11 @@
+using System;
+
 public class SimpleGoal : Goal
 {
     // Attributes
     bool _isComplete;
+
+    // Constructors
     public SimpleGoal(string name, string description) : base(name, description)
     {
     }
@@ -10,8 +14,8 @@ public class SimpleGoal : Goal
         _isComplete = isComplete;
     }
 
-// Overridden Behaviors
-public override void RecordEvent()
+    // Overridden Behaviors
+    public override void RecordEvent()
     {
         _isComplete = true;
         Console.WriteLine($"Congratulations! You earned {GetPoints()} points!");

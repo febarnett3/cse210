@@ -1,18 +1,22 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+
 public class GoalsManager
 {
     // Attributes
     private List<Goal> _goals;
     private int _totalPoints;
 
-    // constructor
+    // Constructors
     public GoalsManager()
     {
         _goals = new List<Goal>();
         _totalPoints = 0;
     }
 
-    // Behaviors
+    // Unique Behaviors
     public void AddGoal(Goal goal)
     {
         // Adds activity to _activities
@@ -21,7 +25,6 @@ public class GoalsManager
             _goals.Add(goal);
         }
     }
-
     public void DisplayGoals()
     {
         if (_goals.Count == 0)
@@ -45,7 +48,6 @@ public class GoalsManager
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
     }
-
     public void CalculateRecordedEvent()
     {
         List<Goal> incompleteGoals = FilterIncompleteGoals();
@@ -73,7 +75,65 @@ public class GoalsManager
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
     }
+    public void DisplayTotalPoints()
+    {
+        Console.WriteLine($"You have {_totalPoints} points.");
+    }
+    public int GetValidGoalIndex(string prompt, List<Goal> list)
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+            string input = Console.ReadLine();
 
+            if (int.TryParse(input, out int number))
+            {
+                // The user input is a valid integer
+                if (number <= list.Count())
+                {
+                    return number;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"'{input}' is not a valid integer. Please try again.");
+                Console.Write(prompt);
+            }
+        }
+    }
+    public void SaveGoals()
+    {
+        Console.Clear();
+        Console.WriteLine("Saving...");
+        string filename = GetFileName();
+        UpdateFile(filename);
+    }
+    public void LoadGoals()
+    {
+        Console.Clear();
+        Console.WriteLine("Loading...");
+        string filename = GetFileName();
+
+        if (!File.Exists(filename))
+        {
+            Console.WriteLine($"File '{filename}' does not exist.");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            return;
+        }
+
+        ConvertFileToGoals(filename);
+        foreach (Goal goal in _goals)
+        {
+            goal.IsComplete();
+        }
+
+        Console.WriteLine();
+        Console.WriteLine($"Contents of {filename}:");
+        DisplayGoals();
+    }
+
+    // Private Behaviors
     private void DisplayIncompleteGoals(List<Goal> incompleteGoals)
     {
         int index = 1;
@@ -100,41 +160,6 @@ public class GoalsManager
         }
         return incompleteGoals;
     }
-    public void DisplayTotalPoints()
-    {
-        Console.WriteLine($"You have {_totalPoints} points.");
-    }
-    public static int GetValidGoalIndex(string prompt, List<Goal> list)
-    {
-        while (true)
-        {
-            Console.Write(prompt);
-            string input = Console.ReadLine();
-
-            if (int.TryParse(input, out int number))
-            {
-                // The user input is a valid integer
-                if (number <= list.Count())
-                {
-                    return number;
-                }
-            }
-            else
-            {
-                Console.WriteLine($"'{input}' is not a valid integer. Please try again.");
-                Console.Write(prompt);
-            }
-        }
-    }
-
-    public void SaveGoals()
-    {
-        Console.Clear();
-        Console.WriteLine("Saving...");
-        string filename = GetFileName();
-        UpdateFile(filename);
-    }
-
     private void UpdateFile(string filename)
     {
         File.WriteAllText(filename,string.Empty);
@@ -149,33 +174,6 @@ public class GoalsManager
                 }
             }
     }
-
-
-    public void LoadGoals()
-    {
-        Console.Clear();
-        Console.WriteLine("Loading...");
-        string filename = GetFileName();
-
-        if (!File.Exists(filename))
-        {
-            Console.WriteLine($"File '{filename}' does not exist.");
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
-            return;
-        }
-
-        ConvertFileToGoals(filename);
-        foreach (Goal goal in _goals)
-        {
-            goal.IsComplete();
-        }
-
-        Console.WriteLine();
-        Console.WriteLine($"Contents of {filename}:");
-        DisplayGoals();
-    }
-
     private void ConvertFileToGoals(string filename)
     {
         _goals.Clear();

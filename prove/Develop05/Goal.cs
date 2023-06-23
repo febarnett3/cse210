@@ -1,3 +1,4 @@
+using System;
 public class Goal
 {
     // Attributes
@@ -17,6 +18,7 @@ public class Goal
         _description = description;
         _goalPoints = goalPoints;
     }
+
     //Getters
     public string GetName()
     {
@@ -30,21 +32,8 @@ public class Goal
     {
         return _goalPoints;
     }
-    
-    // Behaviors
-    public string GetCheckBox()
-    {
-        if (IsComplete())
-        {
-            return "[X]";
-        }
-        else
-        {
-            return "[ ]";
-        }
-    }
 
-    // Overridden Behaviors
+    // Virtual Behaviors
     public virtual void RecordEvent()
     {
         // No default code necessary.
@@ -63,6 +52,10 @@ public class Goal
     {
         Console.WriteLine($"{GetCheckBox()} {_name} ({_description})");
     }
+    public virtual string ConvertToFile()
+    {
+        return $"Did not properly convert";
+    }
 
     // Private Behaviors
     private void InquiryGoalName()
@@ -76,14 +69,24 @@ public class Goal
         Console.Write("What is a short description of it? ");
         _description = Console.ReadLine();
     }
-
     private void InquiryGoalPoints()
     {
         _goalPoints = InquiryValidInteger("What is the amount of points associated with this goal? ");
     }
 
-    // Special behvavior. Might want to have in own class later. If it's in its own class, make it static.
-    public static int InquiryValidInteger(string prompt)
+    // Unique Behaviors
+    public string GetCheckBox()
+    {
+        if (IsComplete())
+        {
+            return "[X]";
+        }
+        else
+        {
+            return "[ ]";
+        }
+    }
+    public int InquiryValidInteger(string prompt)
     {
         Console.Write(prompt);
 
@@ -102,10 +105,5 @@ public class Goal
                 Console.Write(prompt);
             }
         }
-    }
-
-    public virtual string ConvertToFile()
-    {
-        return $"Did not properly convert";
     }
 }
