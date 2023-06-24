@@ -21,6 +21,7 @@ class Program
         {
             Console.Clear();
             goalsManager.DisplayTotalPoints();
+            goalsManager.DisplayNumRecordedEvents();
             DisplayMenu();
             // Read the user input
             Console.Write("What would you like to do? ");

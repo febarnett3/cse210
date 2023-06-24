@@ -8,12 +8,14 @@ public class GoalsManager
     // Attributes
     private List<Goal> _goals;
     private int _totalPoints;
+    private int _numRecordedEvents;
 
     // Constructors
     public GoalsManager()
     {
         _goals = new List<Goal>();
         _totalPoints = 0;
+        _numRecordedEvents = 0;
     }
 
     // Unique Behaviors
@@ -72,12 +74,17 @@ public class GoalsManager
         }
         int earnedPoints = selectedGoal.GetPoints();
         _totalPoints += earnedPoints;
+        _numRecordedEvents++;
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
     }
     public void DisplayTotalPoints()
     {
         Console.WriteLine($"You have {_totalPoints} points.");
+    }
+    public void DisplayNumRecordedEvents()
+    {
+        Console.WriteLine($"You have recorded {_numRecordedEvents} events.");
     }
     public int GetValidGoalIndex(string prompt, List<Goal> list)
     {
@@ -167,6 +174,7 @@ public class GoalsManager
         using (StreamWriter w = File.AppendText(filename))
             {
                 w.WriteLine(_totalPoints);
+                w.WriteLine(_numRecordedEvents);
 
                 foreach (Goal goal in _goals)
                 {
@@ -180,9 +188,11 @@ public class GoalsManager
 
         string[] lines = File.ReadAllLines(filename);
         string line1 = lines[0].Trim();
+        string line2 = lines[1].Trim();
         _totalPoints = Convert.ToInt32(line1);
+        _numRecordedEvents = Convert.ToInt32(line2);
 
-        for (int i = 1; i < lines.Length; i++)
+        for (int i = 2; i < lines.Length; i++)
         {
             string line = lines[i];
             string[] parts = line.Split(":");

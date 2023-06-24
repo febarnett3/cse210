@@ -1,5 +1,6 @@
-550
+900
+5
 SimpleGoal:Give a talk,in sacrament,100,True
 EternalGoal:read the scriptures,for 10 min,50
 ChecklistGoal:go to the temple,perform ordinances,350,300,3,3
-SimpleGoal:Host FHE,hour activity,250,False
+SimpleGoal:Host FHE,hour activity,250,True
