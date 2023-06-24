@@ -7,6 +7,6 @@ public class ListGoalsCommand : Command
     // Overridden Behaviors
     public override void Execute()
     {
-        goalsManager.DisplayGoals();
+        GoalsManager.DisplayGoals();
     }
 }

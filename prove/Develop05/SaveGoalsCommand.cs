@@ -8,6 +8,6 @@ public class SaveGoalsCommand : Command
     // Overridden Behaviors
     public override void Execute()
     {
-        goalsManager.SaveGoals();
+        GoalsManager.SaveGoals();
     }
 }

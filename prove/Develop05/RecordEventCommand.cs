@@ -8,6 +8,6 @@ public class RecordEventCommand : Command
     // Overridden Behaviors
     public override void Execute()
     {
-        goalsManager.CalculateRecordedEvent();
+        GoalsManager.CalculateRecordedEvent();
     }
 }

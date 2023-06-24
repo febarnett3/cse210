@@ -8,6 +8,6 @@ public class LoadGoalsCommand : Command
     // Overridden Behaviors
     public override void Execute()
     {
-        goalsManager.LoadGoals();
+        GoalsManager.LoadGoals();
     }
 }

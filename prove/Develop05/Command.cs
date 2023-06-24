@@ -1,10 +1,10 @@
 public abstract class Command
 {
-    protected GoalsManager goalsManager;
+    protected GoalsManager GoalsManager;
 
     public Command(GoalsManager goalsManager)
     {
-        this.goalsManager = goalsManager;
+        this.GoalsManager = goalsManager;
     }
 
     public abstract void Execute();

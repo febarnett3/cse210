@@ -15,7 +15,7 @@ public class SimpleGoalCommand : Command
         Console.Clear();               
         Console.WriteLine("Okay! Let's create a simple goal!");
         simpleGoal.InquiryGoalDetails();
-        goalsManager.AddGoal(simpleGoal);
+        GoalsManager.AddGoal(simpleGoal);
     }
 }
 
@@ -33,7 +33,7 @@ public class EternalGoalCommand : Command
         Console.Clear();
         Console.WriteLine("Okay! Let's create an eternal goal!");
         eternalGoal.InquiryGoalDetails();
-        goalsManager.AddGoal(eternalGoal);
+        GoalsManager.AddGoal(eternalGoal);
     }
 }
 
@@ -51,7 +51,7 @@ public class ChecklistGoalCommand : Command
         Console.Clear();
         Console.WriteLine("Okay! Let's create a checklist goal!");
         checklistGoal.InquiryGoalDetails();
-        goalsManager.AddGoal(checklistGoal);
+        GoalsManager.AddGoal(checklistGoal);
     }
 }
 

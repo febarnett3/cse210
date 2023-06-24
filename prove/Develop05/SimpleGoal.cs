@@ -3,7 +3,7 @@ using System;
 public class SimpleGoal : Goal
 {
     // Attributes
-    bool _isComplete;
+    private bool _isComplete;
 
     // Constructors
     public SimpleGoal(string name, string description) : base(name, description)
