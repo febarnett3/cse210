@@ -1,6 +1,11 @@
 using System;
 using System.Collections.Generic;
 
+// Exceeds Requirements. 
+// Implemented the "Command Pattern" into my menu systems. 
+// Main menu also displays number of events recorded.
+// Number of Events can be saved and loaded on a text file.
+
 class Program
 {
     static void Main(string[] args)
