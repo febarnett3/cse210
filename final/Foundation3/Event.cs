@@ -1,4 +1,5 @@
-public class Event
+using System;
+public abstract class Event
 {
     // Attributes
     private string _title;
@@ -16,6 +17,7 @@ public class Event
         _time = time;
         _address = address;
     }
+
     // Getters
     public string GetTitle()
     {
@@ -25,6 +27,7 @@ public class Event
     {
         return _date;
     }
+    
     // Behaviors
     public void ShowStandardDetails()
     {
@@ -33,13 +36,12 @@ public class Event
         Console.WriteLine($"{_date} | {_time}");
         Console.WriteLine($"At {_address}");
     }
-    public virtual void ShowFullDetails()
+    public void ShowShortDescription()
     {
-
+        Console.WriteLine($"{GetType()}: '{GetTitle()}' on {GetDate()}");
     }
-    public virtual void ShowShortDescription()
-    {
-        
-    }
+    
+    // Abstract Behaviors
+    public abstract void ShowFullDetails();
 
 }

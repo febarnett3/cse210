@@ -1,10 +1,12 @@
 using System;
-
+using System.Collections.Generic;
 class Program
 {
     static void Main(string[] args)
     {
+        // Create empty video list.
         List<Video> videos = new List<Video>();
+
         // Create Video
         Video video1 = new Video("Baking Cookies!", "Phyllis Vance", 300);
         // Add Comments
@@ -21,7 +23,6 @@ class Program
         video2.AddComment(new Comment("febarnett3", "Is a National Geographic for animals that don't exist."));
         video2.AddComment(new Comment("tkfergie98", "OOHHH blue people!"));
         video2.AddComment(new Comment("blue-person4life", "That's not me! >:("));
-
         // Add video to list
         videos.Add(video1);
 

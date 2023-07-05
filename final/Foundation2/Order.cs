@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 public class Order
 {
     // Attributes
@@ -12,17 +15,10 @@ public class Order
     }
 
     // Behaviors
-    public double CalculateTotalPrice()
+     public void AddProduct(Product product)
     {
-        double totalPrice = 0;
-        foreach(Product product in _products)
-        {
-            totalPrice+=product.GetPrice();
-        }
-        totalPrice += GetShippingCost();
-        return totalPrice;
+        _products.Add(product);
     }
-
     private int GetShippingCost()
     {
         if (_customer.InUSA())
@@ -34,8 +30,7 @@ public class Order
             return 35;
         }
     }
-
-    public void GetPackingLabel()
+    public void DisplayPackingLabel()
     {
         foreach (Product product in _products)
         {
@@ -43,17 +38,22 @@ public class Order
             Console.WriteLine($"{product.GetQuantity()} {product.GetProductID()} {product.GetName()} ${price.ToString("0.00")}");
         }
     }
-    public void GetShippingLabel()
+    public void DisplayShippingLabel()
     {
         Console.WriteLine($"{_customer.GetName()}: \n{_customer.GetAddress()}");
+    }
+    public double CalculateTotalPrice()
+    {
+        double totalPrice = 0;
+        foreach(Product product in _products)
+        {
+            totalPrice+=product.GetPrice();
+        }
+        totalPrice += GetShippingCost();
+        return totalPrice;
     }
     public void DisplayShippingCost()
     {
         Console.WriteLine($"Shipping: ${GetShippingCost().ToString("0.00")}");
-    }
-
-    public void AddProduct(Product product)
-    {
-        _products.Add(product);
     }
 }

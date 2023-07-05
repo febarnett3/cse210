@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class Video
 {
     // Attributes
@@ -22,6 +26,10 @@ public class Video
     {
         return _comments.Count();
     }
+    public void AddComment(Comment comment)
+    {
+        _comments.Add(comment);
+    }
     public void DisplayVideo()
     {
         Console.WriteLine($"'{_title}' | By: {_author} | Length: {_videoLength}s | There are {GetNumComments()} comments");
@@ -35,9 +43,5 @@ public class Video
         {
             Console.WriteLine(comment.DisplayComment());
         }
-    }
-    public void AddComment(Comment comment)
-    {
-        _comments.Add(comment);
     }
 }

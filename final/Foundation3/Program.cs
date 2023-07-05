@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -19,15 +20,15 @@ class Program
         // Show details of each event.
         foreach(Event ev in events)
         {
-           Console.WriteLine("Standard:");
+           Console.WriteLine("Standard Details:");
            ev.ShowStandardDetails();
            Console.WriteLine();
            
-           Console.WriteLine("Full:");
+           Console.WriteLine("Full Details:");
            ev.ShowFullDetails();
            Console.WriteLine();
            
-           Console.WriteLine("Short:");
+           Console.WriteLine("Short Details:");
            ev.ShowShortDescription();
            Console.WriteLine();
         }

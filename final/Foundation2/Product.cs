@@ -34,5 +34,5 @@ public class Product
     public double GetPrice()
     {
         return _price*_quantity;
-}
+    }
 }

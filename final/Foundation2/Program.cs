@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -33,14 +34,15 @@ class Program
         orders.Add(order1);
         orders.Add(order2);
 
+        // Let's display the orders!
         Console.Clear();
         Console.WriteLine("Here's the orders!");
         int index = 1;
         foreach (Order order in orders)
         {
             Console.WriteLine($"Order {index}");
-            order.GetPackingLabel();
-            order.GetShippingLabel();
+            order.DisplayPackingLabel();
+            order.DisplayShippingLabel();
             double total = order.CalculateTotalPrice();
             order.DisplayShippingCost();
             Console.WriteLine($"Total: ${total.ToString("0.00")}");

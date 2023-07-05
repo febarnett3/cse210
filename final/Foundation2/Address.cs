@@ -20,7 +20,6 @@ public class Address
     {
         return _country;
     }
-
     public string GetAddressString()
     {
         return $"{_street}\n{_city}, {_stateProvince}\n{_country}";
