@@ -24,7 +24,7 @@ class Program
         video2.AddComment(new Comment("tkfergie98", "OOHHH blue people!"));
         video2.AddComment(new Comment("blue-person4life", "That's not me! >:("));
         // Add video to list
-        videos.Add(video1);
+        videos.Add(video2);
 
         // Create Video
         Video video3 = new Video("Why You Should Quit", "Michael Scott", 500);
@@ -33,7 +33,7 @@ class Program
         video3.AddComment(new Comment("RichDude101", "Nah, I'll keep my job."));
         video3.AddComment(new Comment("crazyduckgoose", "I guess I gotta quit now!"));
         // Add video to list
-        videos.Add(video1);
+        videos.Add(video3);
 
         foreach(Video video in videos)
         {

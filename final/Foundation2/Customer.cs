@@ -20,6 +20,7 @@ public class Customer
     {
         return _address.GetAddressString();
     }
+    
     // Behaviors
     public bool InUSA()
     {

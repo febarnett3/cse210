@@ -12,6 +12,7 @@ class Program
 
         // create a list of events.
         List<Event>events = new List<Event>();
+
         // Add events to events list
         events.Add(event1);
         events.Add(event2);
@@ -32,6 +33,5 @@ class Program
            ev.ShowShortDescription();
            Console.WriteLine();
         }
-
     }
 }
