@@ -16,8 +16,6 @@ public class Video
         _title = title;
         _author = author;
         _videoLength = videoLength;
-
-        // may need later adjustment for list.
         _comments = new List<Comment>();
     }
 

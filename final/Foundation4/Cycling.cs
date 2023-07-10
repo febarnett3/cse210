@@ -1,25 +1,25 @@
 public class Cycling : Activity
 {
     // Attributes
-    private double _distance;
+    private double _speed;
 
     // Constructor
-    public Cycling(string date, double length, double distance) : base(date, length)
+    public Cycling(string date, double length, double speed) : base(date, length)
     {
-        _distance = distance;
+        _speed = speed;
     }
 
     // Overridden Behaviors
     public override double CalculateDistance()
     {
-        return _distance;
+        return _speed*(GetLength()/60);
     }
     public override double CalculateSpeed()
     {
-        return (_distance / GetLength()) * 60;
+        return _speed;
     }
     public override double CalculatePace()
     {
-        return GetLength() / _distance;
+        return 60 / _speed;
     }
 }
