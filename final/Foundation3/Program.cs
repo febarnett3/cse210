@@ -9,6 +9,8 @@ class Program
         Lecture event1 = new Lecture("Why You Won't Be Rich", "The financial mistakes everyone makes and how to avoid.","06/30/2023","5:00PM MDT","BYU-Idaho I-Center", "Donald Trump", 250);
         Reception event2 = new Reception("Mike & Jenny's Party", "A beautiful wedding reception.","09/12/2024","7:00PM MDT","The Rustic Barnhouse, St. George", "joley63waltz@outlook.com");
         OutdoorGathering event3 = new OutdoorGathering("Grandpa Beck's BBQ","Come enjoy some fresh pork!","07/04/2023","4:00PM MDT", "Smith Park, Rexburg ID","Sunny with a light breeze");
+        Concert event4 = new Concert("Foreigner's Classic hits!","Agent Provacateur","09/08/2023","6:00PM MDT", "Salt Lake City, Utah","Foreigner");
+
 
         // create a list of events.
         List<Event>events = new List<Event>();
@@ -17,6 +19,7 @@ class Program
         events.Add(event1);
         events.Add(event2);
         events.Add(event3);
+        events.Add(event4);
 
         // Show details of each event.
         foreach(Event ev in events)
